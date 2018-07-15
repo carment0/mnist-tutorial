@@ -9,6 +9,6 @@
 ## Requirements
 * `numpy`
 * `jupyter`
-- run `jupyter notebook`
+- run after you activate your env `jupyter notebook`
 * `matplotlib`
 
