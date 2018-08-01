@@ -1,2 +1,3 @@
 from dense import Dense
-from relu from ReLU
+from relu import ReLU
+from softmax import Softmax
