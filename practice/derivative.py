@@ -1,8 +1,11 @@
+# Loss Function Exercise [Loss Function.ipynb]
+# Determine housing prices with MAE loss function
+
 from time import sleep
 import math
 
 data = [(0, 100), (1, 150), (2, 200), (3, 250)]
-params = (50, 100) #answer
+params = (50, 100)
 housing_data = [
 (2.275, 3.891),
 (3.472, 4.5573),
@@ -36,7 +39,9 @@ test_data = [
 (12.8, 10.4202)
 ]
 
-# slope formula use bc dataset is linear. more bedroom, more money
+# ======================Define a function to determine loss=====================
+# we are using the slope formula bc the dataset is linear.
+# more bedroom, more money!
 def pred(x, params):
     p0, p1 = params
     return p0 * x + p1
@@ -49,11 +54,9 @@ def loss(data, pred, params):
 
     return loss
 
-# loss(data, pred, params)
-
-# Slope is rise over run, and derivative is slope
-# slope is a approx, while derivative is real value
-# if you have a curved line you can find the "actual slope" by two ways
+# =================Define a function to calculate the derivative================
+# A slope is a approxmation, while derivative is real value.
+# If you have a curved line you can find the "actual slope" by two ways:
 # the rise over run way (when you zoom into a curve line, eventually the curve
 # will be a line) or taking the derivative
 
@@ -83,7 +86,7 @@ def derivative_respect_to_p1(data, p0, p1):
 # print "Slope is %f" % (rise/run)
 # print "Derivative is %f" %derivative_respect_to_p1(data, 2, 4)
 
-
+# =====================Define a function to test model==========================
 def test_model(test_data, params):
   """Root Mean Squared Error
   https://en.wikipedia.org/wiki/Root-mean-square_deviation
@@ -96,6 +99,7 @@ def test_model(test_data, params):
 
   return math.sqrt(err) / len(test_data)
 
+# ============================Putting it all together===========================
 # Each P is one dimensions, gradient descent (rolling) is a finding the lowest point in multiple dimensions slope
 # Perform gradient descent
 params = (0,0) #random initial values
