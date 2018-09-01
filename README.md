@@ -29,3 +29,29 @@
 ## `__init__.py`
 This is the file where you export your function and classes
 It is equivalent to a constructor for a package.
+
+
+_________________________________________________
+Chain rule
+f(x) = sin(cos(3x))
+  h(x) = 3x
+  g(h) = cos(h)
+  f(g) = sin(g)
+    1. grad_f w.r.t g *TIMES*
+    2. grad_g w.r.t h *TIMES*
+    3. grad_h w.r.t x
+
+this is equal to:
+softmax(dense(x)) => answer or desired output of your neural network
+  dense(x) => s
+  softmax(s) => probability
+    1. grad_softmax w.r.t score *times*
+    2. grad_dense w.r.t x
+
+e.g. for 6 layers
+dense_1(x)
+relu_1(dense_1)
+dense_2(relu_1)
+relu_2(dense_2)
+dense_3(relu_2)
+softmax(dense_3)

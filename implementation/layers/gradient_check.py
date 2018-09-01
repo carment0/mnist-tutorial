@@ -56,3 +56,27 @@ def eval_numerical_gradient(f, x, delta=1e-5):
 # # random_input = np.array([[1,1,1], [1,1,1], [1,1,1]])
 # # print f(random_input)
 
+def eval_numerical_gradient_for_matrix(f, x, grad_f, delta=1e-5):
+  """Evaluate gradient numerically for a funcation that returns a matrix as output, e.g. Dense
+  """
+  grad = np.zeros_like(x)
+  itr = np.nditer(x, flags=['multi_index'], op_flags=['readwrite'])
+  while not itr.finished:
+    idx = itr.multi_index
+
+    init_val = x[idx]
+
+    x[idx] = init_val + delta
+    f_plus = f(x)
+
+    x[idx] = init_val - delta
+    f_minus = f(x)
+
+    x[idx] = init_val
+
+    # compute slope
+    grad[idx] = np.sum((f_plus - f_minus) * grad_f) / (2 * delta)
+
+    itr.iternext()
+
+  return grad
